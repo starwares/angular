@@ -1,0 +1,31 @@
+
+
+
+
+<nav>
+  <a href="/home">Главная</a>
+  <a href="/about">About</a>
+  <div id="indicator"></div>
+</nav>
+
+
+
+
+<div>
+
+
+  <router-outlet></router-outlet>
+
+<!--  <app-to-do-list></app-to-do-list>-->
+
+
+
+</div>
+<!--<app-todo-item (addEvent)="onBoard($event)"></app-todo-item>-->
+
+
+<div aria-live="polite" aria-atomic="true">
+  <div style="position: fixed; top: 10px; right: 10px;">
+    <app-records *ngFor="let item of records$ | async " [item]="item"></app-records>
+  </div>
+</div>

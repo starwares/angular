@@ -1,0 +1,36 @@
+<div class="row">
+<div class="col-md-4 col-sm-12">
+    <label class="form-label">
+  <button [disabled]="isLoading$ | async" (click)="add()" class="btn btn-success">
+    Добавить задание
+  </button></label>
+</div>
+
+<div class="col-md-6 col-sm-12">
+  <label class="form-label">
+    <button (click)="dellAll()" class="btn btn-danger">
+      Удалить все
+    </button></label>
+</div>
+</div>
+<div>{{lengthTodos$ | async}}</div>
+
+<div  *ngIf="isLoading$ | async">
+
+  <div>loading...</div>
+
+</div>
+
+
+
+<div class="flex">
+
+  <input [(ngModel)]="newItemTitle" [attr.disabled]="(isLoading$ | async) ? 'disabled': null " type="text"  class="form-control" placeholder="Новое задание">
+</div>
+<app-todo-item *ngFor="let item of todos$ | async" [model]="item" (delEvent)="onDelItem($event)" ></app-todo-item>
+
+<!--  <app-todo-item [model]="toDoService.todos[0]"></app-todo-item>-->
+<!--  <app-todo-item [model]="toDoService.todos[1]"></app-todo-item>-->
+
+
+
